@@ -6,4 +6,4 @@ import somevalue from "./testname.js";
 console.log(value);
 
 console.log(somevalue);
-
+jjkkjjk
