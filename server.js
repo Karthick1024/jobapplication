@@ -1,4 +1,4 @@
-import 'express-async-errors'
+import "express-async-errors";
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
@@ -6,14 +6,14 @@ const app = express();
 import morgan from "morgan";
 import mongoose from "mongoose";
 
+import { validateTest } from "./middleware/validationMiddleware.js";
 
 //routers
 
 import jobRouter from "./routes/jobRouter.js";
 
-
 //middleware
-import errorHandlerMiddleware from './middleware/errorHandlerMiddleware.js'
+import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -25,8 +25,9 @@ app.get("/", (req, res) => {
   res.send("Hello world!");
 });
 
-app.post("/", (req, res) => {
-  res.json({ message: "Data received", data: req.body });
+app.post("/api/test", validateTest,(req, res) => {
+  const { name } = req.body;
+  res.json({ message: `hello${name}` });
 });
 
 app.use("/api/jobs", jobRouter);
@@ -46,5 +47,5 @@ try {
   });
 } catch (error) {
   console.log(error);
-  process.exit(1)  
+  process.exit(1);
 }
