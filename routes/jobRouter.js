@@ -1,11 +1,21 @@
-import {Router} from 'express'
+import { Router } from "express";
 
-const router = Router()
+const router = Router();
 
-import {getAllJobs,createJob,editJob,deleteJob,getJob} from '../controllers/jobController.js'
+import {
+  getAllJobs,
+  createJob,
+  editJob,
+  deleteJob,
+  getJob,
+} from "../controllers/jobController.js";
+import { validateJobInput,validateIdParam } from "../middleware/validationMiddleware.js";
 
-router.route('/').get(getAllJobs).post(createJob)
-router.route('/:id').get(getJob).put(editJob).delete(deleteJob)
+router.route("/").get(getAllJobs).post(validateJobInput, createJob);
+router
+  .route("/:id")
+  .get(validateIdParam,getJob)
+  .put(validateJobInput, editJob)
+  .delete(validateIdParam,deleteJob);
 
-
-export default router
+export default router;
