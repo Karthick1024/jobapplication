@@ -15,6 +15,8 @@ import {
 
 } from './Pages'
 
+import { action as registerAction} from './Pages/Register';
+
 export const checkdefaulttheme = () => {
   const darktheme = localStorage.getItem('darktheme') === 'true';
   document.body.classList.toggle('dark-theme', darktheme);
@@ -37,7 +39,8 @@ const router = createBrowserRouter(
 
         {
           path: 'register',
-          element: <Register />
+          element: <Register />,
+          action:registerAction
         },
         {
           path: 'login',
