@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.aside`
   display: none;
@@ -53,6 +53,9 @@ const Wrapper = styled.aside`
     }
     .active {
       color: var(--primary-500);
+    }
+    .pending {
+      background: var(--background-color);
     }
     .pending {
       background: var(--background-color);

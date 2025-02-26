@@ -10,12 +10,22 @@ import {
   Stats,
   AllJobs,
   Profile,
-  Admin
-
+  Admin,
+  Editjob,
+ 
 
 } from './Pages'
 
-import { action as registerAction} from './Pages/Register';
+import { action as registerAction } from './Pages/Register';
+import { action as loginAction } from './Pages/Login';
+import { loader as dashboardLoader } from './Pages/Dashboard';
+import { action as addJobAction } from './Pages/Addjob';
+import { loader as allJobsLoader } from './Pages/AllJobs';
+import { loader as editJobLoader } from './Pages/Editjob';
+import { action as editJobAction } from './Pages/Editjob';
+import  { action as deleteAction } from './Pages/DeleteJob';
+;
+
 
 export const checkdefaulttheme = () => {
   const darktheme = localStorage.getItem('darktheme') === 'true';
@@ -40,19 +50,22 @@ const router = createBrowserRouter(
         {
           path: 'register',
           element: <Register />,
-          action:registerAction
+          action: registerAction
         },
         {
           path: 'login',
-          element: <Login />
+          element: <Login />,
+          action: loginAction
         },
         {
           path: 'dashboard',
           element: <Dashboard />,
+          loader: dashboardLoader,
           children: [
             {
               index: true,
-              element: <AddJob />
+              element: <AddJob />,
+              action: addJobAction
             },
             {
               path: 'stats',
@@ -60,7 +73,8 @@ const router = createBrowserRouter(
             },
             {
               path: 'all-jobs',
-              element: <AllJobs />
+              element: <AllJobs />,
+              loader: allJobsLoader
             },
             {
               path: 'profile',
@@ -70,6 +84,17 @@ const router = createBrowserRouter(
               path: 'admin',
               element: <Admin />
             },
+            {
+              path: 'edit-job/:id',
+              element: <Editjob />,
+              action: editJobAction,
+              loader: editJobLoader
+            },
+            {
+              path: 'delete-job/:id',
+              
+              action:deleteAction
+            }
 
           ]
         },
