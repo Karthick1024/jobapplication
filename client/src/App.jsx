@@ -25,6 +25,7 @@ import { loader as editJobLoader } from './Pages/Editjob';
 import { action as editJobAction } from './Pages/Editjob';
 import { action as deleteAction } from './Pages/DeleteJob';
 import { loader as adminLoader } from './Pages/Admin';
+import {action as profileAction} from './Pages/Profile'
   ;
 
 
@@ -79,7 +80,8 @@ const router = createBrowserRouter(
             },
             {
               path: 'profile',
-              element: <Profile />
+              element: <Profile />,
+              action:profileAction
             },
             {
               path: 'admin',
