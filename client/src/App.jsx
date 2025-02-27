@@ -12,7 +12,7 @@ import {
   Profile,
   Admin,
   Editjob,
- 
+
 
 } from './Pages'
 
@@ -23,8 +23,9 @@ import { action as addJobAction } from './Pages/Addjob';
 import { loader as allJobsLoader } from './Pages/AllJobs';
 import { loader as editJobLoader } from './Pages/Editjob';
 import { action as editJobAction } from './Pages/Editjob';
-import  { action as deleteAction } from './Pages/DeleteJob';
-;
+import { action as deleteAction } from './Pages/DeleteJob';
+import { loader as adminLoader } from './Pages/Admin';
+  ;
 
 
 export const checkdefaulttheme = () => {
@@ -82,7 +83,8 @@ const router = createBrowserRouter(
             },
             {
               path: 'admin',
-              element: <Admin />
+              element: <Admin />,
+              loader: adminLoader
             },
             {
               path: 'edit-job/:id',
@@ -92,8 +94,8 @@ const router = createBrowserRouter(
             },
             {
               path: 'delete-job/:id',
-              
-              action:deleteAction
+
+              action: deleteAction
             }
 
           ]
