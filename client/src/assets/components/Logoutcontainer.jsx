@@ -12,11 +12,12 @@ const Logoutcontainer = () => {
     return (
         <Wrapper>
             <button type='button' className="btn logout-btn" onClick={() => { setShowlogout(!showlogout) }}>
-                <FaUserCircle/>
+                {user.avatar ? <img src={user.avatar} alt='avatar' className='img' /> : <FaUserCircle />}
+
                 {user?.name}
-                <FaCaretDown/>
+                <FaCaretDown />
             </button>
-            <div className={showlogout?"dropdown show-dropdown":"dropdown"}>
+            <div className={showlogout ? "dropdown show-dropdown" : "dropdown"}>
                 <button type='button' className='dropdown-btn' onClick={logoutuser}>
                     Logout
                 </button>
