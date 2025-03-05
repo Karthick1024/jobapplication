@@ -1,10 +1,11 @@
 import Jobs from "./Jobs"
 import Wrapper from "../wrappers/JobsContainer";
 import { useAllJobsContext } from "../../Pages/AllJobs";
+import PageBtnContainer from "./PageBtnContainer";
 
 const JobsContainer = () => {
     const { data } = useAllJobsContext()
-    const { jobs } = data
+    const { jobs, totalJobs, numOfPages } = data
 
     if (jobs.length === 0) {
         return <Wrapper>
@@ -13,11 +14,13 @@ const JobsContainer = () => {
     }
     return (
         <Wrapper>
+            <h5>{totalJobs} job{jobs.length > 1 && 's'}</h5>
             <div className="jobs">
-                {jobs.map((job)=>{
-                    return <Jobs key={job._id} {...job}/>
+                {jobs.map((job) => {
+                    return <Jobs key={job._id} {...job} />
                 })}
             </div>
+            {numOfPages > 1 && <PageBtnContainer/>}
         </Wrapper>
     )
 }

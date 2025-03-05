@@ -1,4 +1,4 @@
-import { Link, Form, redirect, useNavigation, useActionData, useNavigate } from 'react-router-dom'
+import { Link, Form, redirect,  useActionData, useNavigate } from 'react-router-dom'
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage'
 import Logo from '../assets/components/Logo'
 import { FormRow } from '../assets/components'
@@ -45,8 +45,7 @@ const loginDemoUser = async ()=>{
 
 
 
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting'
+
   const errors = useActionData()
   return (
     <Wrapper>
