@@ -24,7 +24,7 @@ const Error = () => {
   return (
     <Wrapper>
     <div>
-      <h3>Something Went Wrong!</h3>
+      <h3>Something Went Wrong! Error</h3>
       
     </div>
     </Wrapper>
